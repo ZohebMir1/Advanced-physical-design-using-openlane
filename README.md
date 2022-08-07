@@ -3,7 +3,7 @@
 
 # Day1:  Inception of open-source EDA, OpenLANE and Sky130 PDK
 
-# What’s Inside an IC ?
+## What’s Inside an IC ?
 
 ![2](https://user-images.githubusercontent.com/110513499/182810848-3ec9e0d3-1b4a-4417-8857-8428fafb5ea8.png)
   IC mainly consists of three sections:- 
@@ -13,7 +13,7 @@
   3) CORE:- In the core, all the components responsible for functionality and logic are placed        such as cells, gates, etc.
 
 
-# Asic physical design flow
+## Asic physical design flow
 
 The diagram below shows the detailed flow of physical design:
 ![1](https://user-images.githubusercontent.com/110513499/182806076-190e8989-3ede-4777-901b-68aa4cb3ae5a.png)
@@ -37,7 +37,7 @@ The diagram below shows the detailed flow of physical design:
    1) Magic:- It is used for checking DRC errors.
    2) Magic and Netgen:- These both tools are used in combination to check for LVS violations.
 
-# Components needed for ASIC
+## Components needed for ASIC
 
 ![3](https://user-images.githubusercontent.com/110513499/182813485-c0ceaa23-523e-459d-9b54-35538c8d9930.png)
 
@@ -58,12 +58,12 @@ The diagram below shows the detailed flow of physical design:
   Outputs of ASIC design:-
   1) Layout (GDS11):- It is generated at the end of the design flow. It is a database format          which contains complete design with layout.
 
-# StriVe and its features
+## StriVe and its features
 
 StriVe is an SOC family designed by efabless with everything open source such as EDA tools, PDK’s and RTL designs. Below image shows the complete family of StriVe with its features.
 ![4](https://user-images.githubusercontent.com/110513499/182821233-517e9573-956a-428e-84a3-8427b83d6512.png)
 
-# PDK File Directory
+## PDK File Directory
 ![5](https://user-images.githubusercontent.com/110513499/182821763-ec222f45-c795-4a1a-98db-875d8bde238f.png)
 
 There are 3 pdk files in the directory
@@ -73,19 +73,19 @@ There are 3 pdk files in the directory
 
  3) sky130A:- This is the particular pdk file which is made compatible with open source tools.       This file contains reference libraries with respect to technology and process variations.
 
-# Opening the openLane tool
+## Opening the openLane tool
 ![6](https://user-images.githubusercontent.com/110513499/182824775-26e965f3-5f13-4480-9eb4-f2f9bc6d5ab9.png)
 
 The script is run which is known as flow.tcl, this script starts the openLane tool. It also uses argument in order to use openLane in either of the two modes available which are interactive and autonomous mode.
 
 ![7](https://user-images.githubusercontent.com/110513499/182824947-9dc8e4e6-f3c9-4668-969e-6edf875a1862.png)
 
-# Contents of design folder
+## Contents of design folder
 ![8](https://user-images.githubusercontent.com/110513499/182825327-e961be1a-f05b-4f33-9da4-0631e58f266f.png)
 
 It contains scripts which are used to configure pdks. It also contains a src folder which contains verilog netlist which needs to be synthesized. It also contains a design constraint file which contains logical constraints of the design. It also contains a config file which configures the design and some parameters which need to be changed from default such as clock period and file paths. The run folder contains the generated files after a successful run, it also contains results, commands executed, logs of the terminal.
 
-# Design setup
+## Design setup
 
 Synthesis needs various inputs such as RTL code from the front-end and standard cell libraries which will be used to map the RTL netlist generated after synthesis with the standard cells, this is done by ABC software in our project. All these files need to be set up before running the synthesis.
 
@@ -95,7 +95,7 @@ This is done by using the command “prep -design $filename”, as shown below. 
 
 ![10](https://user-images.githubusercontent.com/110513499/182826566-ac113bee-f8b1-4a80-b3a2-80046abebe7e.png)
 
-# Synthesis
+## Synthesis
 
 Synthesis:- To perform synthesis run command: run_synthesis
 ![11](https://user-images.githubusercontent.com/110513499/182827849-29f514be-2852-4df1-9c09-046392abb5bc.png)

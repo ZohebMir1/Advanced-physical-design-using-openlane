@@ -117,6 +117,77 @@ To calculate ratio of D flip flop to total number of cells:-
 
 Ratio= 1613/14786 =0.1090 or 10.9%
 
+## Day2:- Good floorplan VS Bad floorplan
+
+### List of all switches/functions available for using this software
+In current scenario, as the work is automated and done by the software. Its important to instruct the tool what you expect the tool to do. All the functions which can be used in openLane tool to command it are listed in the below images.
+![1](https://user-images.githubusercontent.com/110513499/183488587-a0be2640-8f75-480a-a7e8-7d4f22635e7e.png)
+![2](https://user-images.githubusercontent.com/110513499/183491475-1f354fa1-8bd6-460e-ac3c-9565f10c0b09.png)
+
+### Default conifguration of tool for floorplan
+If we did not instruct the software by not using any of the above shown commands, how will the tool work ? So, the tool already has a few default commands set. If we did not write a few commands tool does the work as instructed by default functions in one of the configuration files. The images below indicates the default functions for openLane software.
+![3_floorplan tcl](https://user-images.githubusercontent.com/110513499/183492624-d4ecf61a-a3a0-425e-a8c6-09b1f5c48844.png)
+![4-floorplan tcl](https://user-images.githubusercontent.com/110513499/183492646-75066c58-dbed-43ae-ac86-455e7d3d44e6.png)
+
+### Configuration file
+The configuration file is present inside the openLane directory. The software also reads this file in order to understand the functions it has to do. The image below shows the configuration file and the functions instructed to the tools by this file.
+![6_config,tck](https://user-images.githubusercontent.com/110513499/183495165-47a429a5-8aae-4ab0-bcfd-1025baa02f3c.png)
+
+### Sky130 file
+It is also similar to the above two files which helps the users to command the tool. The image of this file has been shown below.
+![7_sky130](https://user-images.githubusercontent.com/110513499/183495938-9524740f-16dc-466a-916d-2a5711ff8393.png)
+
+### Precedence of configuration, default file, sky130
+You may wonder, if I give a same function in all the files but with different way of doing the same thing. What will the tool do ? So, the tool gives priority or higher power to some files which means that if a same function is set in all the files it will accept the value only from the file which has highest precedence. If a function is given in only two files, it will accept that variable from the file with highest precedence of both. Precedence of the tools are listed below.
+
+Sky130 file > configuration file > foorplan file.
+So, sky130 file has the highest priority and floorplan.tcl will have the least probability
+
+
+### How to run floorplan 
+In the updated version of openLane software, the set of commands to execute various tasks without any error in openLane has been changed from the previous one. So, in order to run floorplan. We use the command below:-
+
+init_floorplan
+
+### Output file for the floorplan
+The floorplan generates a file in the def format. DEF stands for data exchange format. This file contains the physical view of the project with every physical detail such as dimensions, contents in each row of a die(semiconductor),etc. The def file which was generated after floorplan will contain dimensions and location of the die, io ports, tap cells with also their detailed physical view.
+
+### Magic sofware and how to use it in openLane flow:-
+If we recall from the flow chart of openLane, we will get to know about the various softwares used in the openLane flow. One of the softwares used in this flow is Magic. If we want to physically see our project, we will have to use Magic software. To open Magic software, we will have to use the below command:-
+Magic -T <tech file path> lef read <lef file path> def read <def file path>.
+
+The below image shows an example command which was used to open floorplan
+![8](https://user-images.githubusercontent.com/110513499/183498480-62dded01-fa9d-40ac-b1e3-9679075d2a95.png)
+
+The image below shoes the view of the file when it is openend using Magic software. 
+![9_layout_magic](https://user-images.githubusercontent.com/110513499/183500748-2c7fe459-1c23-467f-aa82-e0feec1a58aa.png)
+
+### How to use magic for floorplan
+ - How to select a block in Magic ?
+    To open a blow in magic scroll over that block and press s. It will select the block
+ 
+ - How to view which details of the cell(block) ?
+    To view the details of the block such as its name, it is made of which metal layers. Give the command "what" after selecting that block in the tkcon window. Tkcon     window is basically a window created when we run Magic, to give any commands to the Magic software we give it in this window. The image below shows one of the         examples of the command "what".
+    ![10_what](https://user-images.githubusercontent.com/110513499/183502367-5fbc2e7b-f33d-45c7-ba6b-c478f4672f31.png)
+
+### Examples of a functions of floorplan in openLane
+The function is FP_IO_MODE. This abrevation stands for floorplan_Input/output_modes. This command will set the formation of input/output modes present in the design, by formation it means spacing between all the cells of design whether it should be random or evenly spaced. If FP_IO_MODE is set to 1, the tool places all the input/output in the random manner but they are spread across the overall boundary of the design and if FP_IO_MODE is set to 0, then the tool places all the input/output in the equally distant manner but crowdedly at some instances and empty at the other. Also, the openLane tool in its interactive mode allows to change the functions on the go in between various stages of the VLSI flow.
+
+The image below shows io pins placed at random distance:
+![11_floorplan_random_io](https://user-images.githubusercontent.com/110513499/183504875-9bfa2ef5-ffb5-4f41-8de9-f021e28cb7ba.png)
+
+The image below shows the command to place pins at equal distance:
+
+
+  
+
+
+
+
+
+
+
+
 
 
 

@@ -9,8 +9,34 @@
   - [Contents of design folder](https://github.com/ZohebMir1/VSD_WKSHP/edit/main/README.md#contents-of-design-folder)
   - [Design setup](https://github.com/ZohebMir1/VSD_WKSHP/edit/main/README.md#design-setup)
   - [Synthesis](https://github.com/ZohebMir1/VSD_WKSHP/edit/main/README.md#synthesis)
+ 
+- Day2
+  - [List of all switches/functions available for using this software](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#list-of-all-switchesfunctions-available-for-using-this-software)
+  - [Default conifguration of tool for floorplan](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#Default-conifguration-of-tool-for-floorplan)
+  - [Configuration file](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#configuration-file)
+  - [Sky130 file](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#Sky130-file)
+  - [Precedence of configuration, default file, sky130](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#Precedence-of-configuration-default-file-sky130)
+  - [How to run floorplan](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-run-floorplan)
+  - [Output file after the floorplan](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#output-file-for-the-floorplan)
+  - [Magic sofware and how to use it in openlane flow](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#magic-sofware-and-how-to-use-it-in-openlane-flow-)
+  - [How to use magic for floorplan](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-use-magic-for-floorplan)
+  - [Change on the go in the interactive mode](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#change-on-the-go-in-the-interactive-mode)
+  - [Example of a functions of floorplan in openlane](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#example-of-a-functions-of-floorplan-in-openlane)
 
-
+- Day3
+  - [Steps to open a cell in magic](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#steps-to-open-a-cell-in-magic)
+  - [Steps to extract spice file from the layout](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#steps-to-extract-spice-file-from-the-layout)
+  - [How to run the analysis in ngspice](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-run-the-analysis-in-ngspice)
+ 
+ - Day4
+   - [Pre LEF generation tasks for a standard cell](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#pre-lef-generation-tasks-for-a-standard-cell)
+   - [How to extract a lef file from magic](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-extract-a-lef-file-from-magic)
+   - [How to insert our designed cell into the pre-designed block](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-insert-our-designed-cell-into-the-pre-designed-block)
+   - [Steps to invoke sta tool](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#steps-to-invoke-sta-tool)\
+   - [how to improve timing violations in a pre layout sta](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-improve-timing-violations-in-a-pre-layout-sta)
+   - [Manually reduce slack](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#manually-reduce-slack)
+   - [How to run cts](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-run-cts)
+   
 # ADVANCED_PHYSICAL_DESIGN_OPENLANE.
 
 ## Day1:  Inception of open-source EDA, OpenLANE and Sky130 PDK
@@ -20,9 +46,9 @@
  ![2](https://user-images.githubusercontent.com/110513499/182810848-3ec9e0d3-1b4a-4417-8857-8428fafb5ea8.png)
   IC mainly consists of three sections:- 
   
-  1) I/O ring:- The outermost section of an IC is an I/O ring, which contains pins to connect        the chip to outside electronics. It contains pins to give input as well as pins to output.
-  2) DIE:- It is the size of a semiconductor or chip. It connects the I/O ring to the                semiconductor.
-  3) CORE:- In the core, all the components responsible for functionality and logic are placed        such as cells, gates, etc.
+  1) I/O ring:- The outermost section of an IC is an I/O ring, which contains pins to connect the chip to outside electronics. It contains pins to give input as well as pins to output.
+  2) DIE:- It is the size of a semiconductor or chip. It connects the I/O ring to the semiconductor.
+  3) CORE:- In the core, all the components responsible for functionality and logic are placed such as cells, gates, etc.
 
 
 ### Asic physical design flow
@@ -31,21 +57,21 @@ The diagram below shows the detailed flow of physical design:
 ![1](https://user-images.githubusercontent.com/110513499/182806076-190e8989-3ede-4777-901b-68aa4cb3ae5a.png)
   	-source:- Mohamed Shalan, et al. 2020 IEEE/ACM International Conference On Computer Aided Design (ICCAD)
 
-  Synthesis:- In synthesis, an RTL code designed by frontend is converted into gate level         circuit and is stored in the form of a gate level netlist. Open source softwares:-
+  Synthesis:- In synthesis, an RTL code designed by frontend is converted into gate level circuit and is stored in the form of a gate level netlist. Open source softwares:-
    1) Yosys:- It is used to do the synthesis and generates gate level netlist. 
-   2) ABC:- It is used to map the gate level netlist with the models of gates available in the         standard cells library.
-   3) OpenSTA:- It is used to perform static timing analysis and check for any timing violations       before even actually placing all the cells.
+   2) ABC:- It is used to map the gate level netlist with the models of gates available in the standard cells library.
+   3) OpenSTA:- It is used to perform static timing analysis and check for any timing violations before even actually placing all the cells.
 
-  DFT:- It stands for Design for testability. In order to test a small batch of IC’s after         getting manufactured and before getting shipped, DFT is used. The tool adds certain circuitry   in order to test for any manufacturing defects for the design components inside the IC using     Automatic test pattern generator (ATPG). Open source softwares:-
+  DFT:- It stands for Design for testability. In order to test a small batch of IC’s after getting manufactured and before getting shipped, DFT is used. The tool adds certain circuitry   in order to test for any manufacturing defects for the design components inside the IC using Automatic test pattern generator (ATPG). Open source softwares:-
    1)Fault:- It is used to implement DFT in the design.
  
-  Floorplanning, Placements and Routing, CTS and Optimization:- After the synthesis and STA is     done, the actual placements of components from the gate level netlist needs to be done.         Initially floorplanning is done which is deciding the cross-sectional area of the chip. After   floorplanning, placement is done in which components are placed into the planned floorplan.     Then, connections need to be made between these components as indicated in gate level netlist.   This is done at the routing stage. Further, the circuit is optimized. Softwares:- 
+  Floorplanning, Placements and Routing, CTS and Optimization:- After the synthesis and STA is done, the actual placements of components from the gate level netlist needs to be done. Initially floorplanning is done which is deciding the cross-sectional area of the chip. After   floorplanning, placement is done in which components are placed into the planned floorplan. Then, connections need to be made between these components as indicated in gate level netlist.   This is done at the routing stage. Further, the circuit is optimized. Softwares:- 
    1) openROAD app
 
-  Logic Equivalence Checking (LEC):- After the floorplanning, placements, routing and             optimization, the circuit design will be modified. Hence, to make sure the new circuit design   maintains the same functionality, LEC check is done. Open source software:-
+  Logic Equivalence Checking (LEC):- After the floorplanning, placements, routing and optimization, the circuit design will be modified. Hence, to make sure the new circuit design maintains the same functionality, LEC check is done. Open source software:-
    1) Yosys.
 
-  Physical Verification:- After the layout is designed, physical verification of the layout       needs to be done. In physical verification, various checks are done such as Design Rule check   (DRC), Layout vs Schematic (LVS). In DRC, the tool checks for various design rules such as       minimum metal spacing, overlapping of metals, via spacing,etc. In LVS, the tool checks           whether the layout is functioning the same as schematic by generating a netlist of the layout   design and also using the netlist obtained after synthesis then these netlists are run to       check whether the outputs are same for both. Open source softwares used:-
+  Physical Verification:- After the layout is designed, physical verification of the layout needs to be done. In physical verification, various checks are done such as Design Rule check   (DRC), Layout vs Schematic (LVS). In DRC, the tool checks for various design rules such as minimum metal spacing, overlapping of metals, via spacing,etc. In LVS, the tool checks whether the layout is functioning the same as schematic by generating a netlist of the layout   design and also using the netlist obtained after synthesis then these netlists are run to check whether the outputs are same for both. Open source softwares used:-
    1) Magic:- It is used for checking DRC errors.
    2) Magic and Netgen:- These both tools are used in combination to check for LVS violations.
 
@@ -54,21 +80,21 @@ The diagram below shows the detailed flow of physical design:
 ![3](https://user-images.githubusercontent.com/110513499/182813485-c0ceaa23-523e-459d-9b54-35538c8d9930.png)
 
   Inputs of ASIC (Physical Design):- 
-   1) RTL designs:- For physical design of an IC to be done, there is a need for the frontend        design of that particular IC, which is called as RTL design. For open source RTL designs        the sources are as follows:-
+   1) RTL designs:- For physical design of an IC to be done, there is a need for the frontend design of that particular IC, which is called as RTL design. For open source RTL designs the sources are as follows:-
      a) Librecores.org
      b) Opencores.org
      c) Github.com
 
-   2) EDA tools:- To make a physical design, which is the layout of an IC, EDA tools are needed      in almost each and every step of the process such as timing analysis, floorplan, placement      and routing, verification. The open source EDA tools are as follows:-
+   2) EDA tools:- To make a physical design, which is the layout of an IC, EDA tools are needed in almost each and every step of the process such as timing analysis, floorplan, placement and routing, verification. The open source EDA tools are as follows:-
      a) OpenLane
      b) Qflow
      c) OpenRoad
 
-  3) PDK(Process design kits):- In the current scenario, not every IC design company is also         manufacturing the IC. For manufacturing of the IC, there are special fabrication units. In       order to design an IC to be fabricated by some other units there is a need for communication     to get process details for IC to be manufactured, this communications are done by various       files which are provided by the fabs. PDK’s contain all such files and they are specific to     the technology such as 130 nm. The open source PDK’s are as follows:-
+  3) PDK(Process design kits):- In the current scenario, not every IC design company is also manufacturing the IC. For manufacturing of the IC, there are special fabrication units. In order to design an IC to be fabricated by some other units there is a need for communication to get process details for IC to be manufactured, this communications are done by various files which are provided by the fabs. PDK’s contain all such files and they are specific to     the technology such as 130 nm. The open source PDK’s are as follows:-
     a) Skywater-pdk 130 nm.
 
   Outputs of ASIC design:-
-  1) Layout (GDS11):- It is generated at the end of the design flow. It is a database format          which contains complete design with layout.
+  1) Layout (GDS11):- It is generated at the end of the design flow. It is a database format which contains complete design with layout.
 
 ### StriVe and its features
 
@@ -79,11 +105,11 @@ StriVe is an SOC family designed by efabless with everything open source such as
 ![5](https://user-images.githubusercontent.com/110513499/182821763-ec222f45-c795-4a1a-98db-875d8bde238f.png)
 
 There are 3 pdk files in the directory
- 1) Skywater-pdk :-  This file contains each and every file related to the process design           kit(PDK) of Skywater 130 nm such as timing libraries, LEF (library exchange format).
+ 1) Skywater-pdk :-  This file contains each and every file related to the process design kit(PDK) of Skywater 130 nm such as timing libraries, LEF (library exchange format).
 
- 2) Open_pdk:- The Skywater-pdk contains files related to the process but they are generated for     the commercial EDA tools. As we are using an open source EDA tool, there is a need to           convert this file into a file which is compatible with the open source EDA tool. Open_pdk       contains the scripts and files which are used to convert files which are non compatible open     source to the files which are compatible with them.
+ 2) Open_pdk:- The Skywater-pdk contains files related to the process but they are generated for the commercial EDA tools. As we are using an open source EDA tool, there is a need to convert this file into a file which is compatible with the open source EDA tool. Open_pdk contains the scripts and files which are used to convert files which are non compatible open source to the files which are compatible with them.
 
- 3) sky130A:- This is the particular pdk file which is made compatible with open source tools.       This file contains reference libraries with respect to technology and process variations.
+ 3) sky130A:- This is the particular pdk file which is made compatible with open source tools. This file contains reference libraries with respect to technology and process variations.
 
 ### Opening the openLane tool
 ![6](https://user-images.githubusercontent.com/110513499/182824775-26e965f3-5f13-4480-9eb4-f2f9bc6d5ab9.png)
@@ -117,7 +143,7 @@ To calculate ratio of D flip flop to total number of cells:-
 
 Ratio= 1613/14786 =0.1090 or 10.9%
 
-## Day2:- Good floorplan VS Bad floorplan
+## Day2:- Good floorplan VS Bad floorplan and introduction to library cells
 
 ### List of all switches/functions available for using this software
 In current scenario, as the work is automated and done by the software. Its important to instruct the tool what you expect the tool to do. All the functions which can be used in openLane tool to command it are listed in the below images.
@@ -170,23 +196,130 @@ The image below shoes the view of the file when it is openend using Magic softwa
     To view the details of the block such as its name, it is made of which metal layers. Give the command "what" after selecting that block in the tkcon window. Tkcon     window is basically a window created when we run Magic, to give any commands to the Magic software we give it in this window. The image below shows one of the         examples of the command "what".
     ![10_what](https://user-images.githubusercontent.com/110513499/183502367-5fbc2e7b-f33d-45c7-ba6b-c478f4672f31.png)
 
-### Examples of a functions of floorplan in openLane
-The function is FP_IO_MODE. This abrevation stands for floorplan_Input/output_modes. This command will set the formation of input/output modes present in the design, by formation it means spacing between all the cells of design whether it should be random or evenly spaced. If FP_IO_MODE is set to 1, the tool places all the input/output in the random manner but they are spread across the overall boundary of the design and if FP_IO_MODE is set to 0, then the tool places all the input/output in the equally distant manner but crowdedly at some instances and empty at the other. Also, the openLane tool in its interactive mode allows to change the functions on the go in between various stages of the VLSI flow.
+### Change on the go in the interactive mode
+The openLane tool in its interactive mode allows to change the functions on the go in between various stages of the VLSI flow. Example of a function it shown in the below below topic.
 
-The image below shows io pins placed at random distance:
-![11_floorplan_random_io](https://user-images.githubusercontent.com/110513499/183504875-9bfa2ef5-ffb5-4f41-8de9-f021e28cb7ba.png)
+### Example of a functions of floorplan in openLane
+The function is FP_IO_MODE. This abrevation stands for floorplan_Input/output_modes. This command will set the formation of input/output modes present in the design, by formation it means spacing between all the cells of design whether it should be random or evenly spaced. If FP_IO_MODE is set to 1, the tool places all the input/output in the random manner but they are spread across the overall boundary of the design and if FP_IO_MODE is set to 0, then the tool places all the input/output in the equally distant manner but crowdedly at some instances and empty at the other.
+
 
 The image below shows the command to place pins at equal distance:
+![12_statement](https://user-images.githubusercontent.com/110513499/183574482-0387e102-e45e-4d94-976d-e70513d3ddea.png)
 
+The image below shows io pins placed at random distance which resulted due to above command:
+![11_floorplan_random_io](https://user-images.githubusercontent.com/110513499/183504875-9bfa2ef5-ffb5-4f41-8de9-f021e28cb7ba.png)
 
+## Day3: Design standard cell using magic layout
+
+### Steps to open a cell in Magic
+As I explained before, Magic software provides physical view of the cell or layout. To open the standard cells file, use command Magic. The image below shows command for opening cell in the Magic layout.
+![1](https://user-images.githubusercontent.com/110513499/183586906-4bdd07ec-b13a-45b1-9d02-4e8e373ddb29.png)
+
+The image below shows the opened standard cell of inverter
+![2](https://user-images.githubusercontent.com/110513499/183587158-4cca420b-3089-4fe4-ad96-5aa12b1b33b2.png)
+
+### Steps to extract spice file from the layout
+If we want to analyze a cell, to check whether its functioning as we have designed or not, we can use ngspice as a simulator for the cell. For the simulation, first step is to extract a spice file from this layout. To extract spice file run the below commands:-
+ - extract all
+   - This step extracts a circuit digram from the layout
   
+ - ext2spice cthresh 0 rthresh 0
+   - This step generates a spice file from the exracted cicuit before.
+   
+ The image below shoes the steps performed in Magic.
+ ![4](https://user-images.githubusercontent.com/110513499/183591753-dc6364cc-ee9f-425d-8e88-0a0d8bff26f5.png)
+ 
+ The image below shows the extracted spice file 
+![3](https://user-images.githubusercontent.com/110513499/183592075-f687d077-c9bd-4c1c-a4ab-6be548e6a324.png)
 
+If we want to run some analysis this file needs to be updated and run in ngspice. The changes needed are as follows, type of analysis you want to run, any internal parameter of the mosfets are 0, default scale needs to be changed with respect to your layout.
 
+The image below shows the updated spice file
+![6](https://user-images.githubusercontent.com/110513499/183595322-613ff22b-0351-4324-bce0-c821fbf22302.png)
 
+### How to run the analysis in ngspice
+The command used to invoke ngspice and run your design is as shown below
+- ngspice "spice file name"
 
+## Day4 Pre-Layout STA and importance of a good clock tree
 
+### Pre LEF generation tasks for a standard cell
+A standard cell always have fixed height. This is because the supply straps are placed like a grid having some distance between them. So, standard cell should always be placed in the space between vdd and vss straps which forms the grid. So, the first step is to check this.
+ - Check whether the height of standard cell is the multiple of spacing between power straps:
+   To check this initially we will check a file known as tracks.info which informs us about the
+   metal spacing. It is a library file shown as shown below.
+   ![1](https://user-images.githubusercontent.com/110513499/183607834-10ee191d-f848-4b59-a000-7d46c82f8f63.png)
+   
+   - Check whether tracks of the metal which is used for port intersects: Note down the particular metal layer used for forming of ports and check whether x and y direction of that metal layer intersects at the input and output ports. This helps `the tool in routing from either x or y direction both. So, it gives the tool more flexibility.
+   
+Method to do these checks are basically use grids of Magic software and change its width to make it same as the metal track widh then it will be clearly visible whether the heigh falls in the multiple of metal tracks and whether the metal which is used to form ports also intersect.
 
+### How to extract a lef file from magic
+ - Lef stands for library exchange format. It has an overall view of the block. It does not contain connections inside a cell. The image below shows the comparison of layout and a lef.
+ ![20](https://user-images.githubusercontent.com/110513499/183599508-18254277-2fb1-490e-9980-9a354f2de2e8.png)
 
+ - Steps to extract a lef file from Magic:- After opening Magic software, a tkcon window is always launched. This window is like a command prompt. Give the below command in this window:
+    lef write 
+    
+    Image below shows the execution of this command
+    ![4](https://user-images.githubusercontent.com/110513499/183600120-dc89df93-f6cc-4922-9c70-6e873b1e42ee.png)
+
+The lef file generated from a standard cell of an inverter is shown below
+![5](https://user-images.githubusercontent.com/110513499/183604335-c8eadfd1-1a3c-4db2-829c-4e5b9e744887.png)
+
+### How to insert our designed cell into the pre-designed block
+We already have a pre-designed netlist which went from RTL design to synthesis and the mapping of the standard cells are also done in synthesis. before synthesis, if we want our cell to be available for the tool to place it in the design, we will need to enter its lef details. As openLane provides the interactive mode, the changes can be made on the go. Steps to make these changes:-
+  - Change the config.tcl and enter the paths to all the libraries such as fast corner, slow corner, typical. The image below shows the changes.
+  ![9](https://user-images.githubusercontent.com/110513499/183611386-f9468caa-975d-4a57-8512-ff797ee9cdde.png)
+  
+  - Now run the VLSI flow until before synthesis and do changes on the go. Provide the lef file which is extracted from Magic software to the tool, so that it can also have our design to place if needed. Use the set command and create the following variable and update it. lef variable is created and lef file is added to this variable. Its implementation is shown below. 
+![6](https://user-images.githubusercontent.com/110513499/183614486-2736c33b-d778-4fc4-9476-a7457f868b32.png)
+
+  - After the synthesis, the terminal will show number of instances where our standard cell is used. Now you can continue with the flow further. The image below shows the output
+  ![8](https://user-images.githubusercontent.com/110513499/183615159-da2f9235-89d3-4161-a3c7-2b92ef50b6eb.png)
+
+### Pre layout STA
+
+### Steps to invoke STA tool
+  - Create a file of type .conf which contains all the files needed for sta and commmands to be performed in the tool. As the pre-layout sta cannot calculate the actual delays, it takes delay from library which contains delay tables. Also, it needs netlist generated after synthesis in order to check from delay table for specific cells,. Also, it needs a sdc file which contains clock details such as clock period, jitter, uncertainty, setup and hold time, etc. The below file shows an example of sta.conf file.  
+![16_sta_file](https://user-images.githubusercontent.com/110513499/183617416-da72766a-2810-47c8-9248-bb5976ee2199.png)
+
+  - To invoke tool, use command sta ".conf filemame" and run it. The below image shows the invoking steps
+![15_sta_run](https://user-images.githubusercontent.com/110513499/183617752-de2b1a4f-6a0f-4f0e-82d7-6bd21dd70658.png)
+
+### How to improve timing violations in a pre-layout STA
+From the delay tables we know that delay depends on output load and input slew. So if we reduce either of these the delay will in turn reduce. Output load can be reduced by adding a buffer. We can also increase the drive strength of a cell which is having large output capacitances. The key functions of the openLane tool which can help reduce timing violations are :-
+ - SYNTH_STRATEGY, if set to focus more on delay it will decrease the violation but it will also increase the area. It can be set set to 0->2. If it is 0 then tool will focus most on the delay and area can increase greatly. If set to 1 then too tool will focus more on delay and less on area but it is less strict on delay as compared to 0. If it is set to 3, then the focus will be on most on to reduce area and delay can increase. If set to 2 it will focus on area but not as strict as 3.
+ 
+ - SYNTH_BUFFERING, if it is set to 1 then it will enable the tool to add buffers in order to reduce output load and in turn delay. If it is set to 0, then tool will be disabled.
+ 
+ - SYNTH SIZING, if set to 1 it enables the tool to increase the drive strength of the cell which has larger fanout, in order to improve timing violations. If it is set to 0 the tool will disable this function.
+ 
+ The image below the impact of these startegies on the delay
+ Slack before using these strategies:- 
+ ![13](https://user-images.githubusercontent.com/110513499/183623207-d282f453-4c9b-4505-bad1-d680b5570774.png)
+
+ Enabled techniques:-
+ ![12_changes_improve_slack](https://user-images.githubusercontent.com/110513499/183623035-7cb39624-ab92-4cb8-8c12-b0468d05d1e3.png)
+ 
+ Slack after using strategies:-
+ ![14](https://user-images.githubusercontent.com/110513499/183623149-d02d9e33-a1ee-4a56-a98c-dda96d2486e0.png)
+ 
+### Manually reduce slack
+If after synthesis, while checking STA report if you find any cell causing huge delays you can manually try to resolve it. First, find the reason for the delay, if it is high fanout then it causes output load to increase and in turn increases delay. To solve this error manually replace the cell with a higher drive strength. Example is shown below
+
+ Cell with 33 fanouts:-
+ ![tmp](https://user-images.githubusercontent.com/110513499/183625302-e8456136-8703-457e-a752-c13a54128ffe.png)
+ 
+ To increase drive strength use command replace_cells:-
+ ![17_report_cells](https://user-images.githubusercontent.com/110513499/183625677-b8521241-89ee-4981-a9cc-e10ec547c5ae.png)
+ 
+ Reduction in that cell delay:-
+ ![18_changes__due_replace_cells](https://user-images.githubusercontent.com/110513499/183625849-8e41e068-1acc-4161-906c-27a672276e0d.png)
+  
+ ### How to run cts
+ To run cts use command run_cts.
+![run_cts](https://user-images.githubusercontent.com/110513499/183626679-b46abc38-c696-4560-82b9-5a170b6e9496.png)
 
 
 

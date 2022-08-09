@@ -36,7 +36,12 @@
    - [how to improve timing violations in a pre layout sta](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-improve-timing-violations-in-a-pre-layout-sta)
    - [Manually reduce slack](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#manually-reduce-slack)
    - [How to run cts](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#how-to-run-cts)
-   
+
+ - Day5
+   - [Generation of power distribution network PDN](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#generation-of-power-distribution-network-pdn)
+   - [Output of pdn](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#output-of-pdn)
+   - [Running routing](https://github.com/ZohebMir1/Advanced-physical-design-using-openlane/edit/main/README.md#running-routing)
+
 # ADVANCED_PHYSICAL_DESIGN_OPENLANE.
 
 ## Day1:  Inception of open-source EDA, OpenLANE and Sky130 PDK
@@ -320,7 +325,31 @@ If after synthesis, while checking STA report if you find any cell causing huge 
  ### How to run cts
  To run cts use command run_cts.
 ![run_cts](https://user-images.githubusercontent.com/110513499/183626679-b46abc38-c696-4560-82b9-5a170b6e9496.png)
+  
+## Day5
 
+### Generation of Power Distribution Network (PDN)
+ - To generate pdn, use command below command after cts:
+      gen_pdn
+
+The image below shows the run of pdn:
+ ![1_pdn](https://user-images.githubusercontent.com/110513499/183630527-1b8f810d-f47d-4926-8704-dd8c77af138e.png)
+
+### Output of pdn
+ At the terminal, the details of the metals of power distribution is listed at the end of the execution. The image below shows it.
+  ![2_PDn_info](https://user-images.githubusercontent.com/110513499/183630734-2212a0da-0364-41d9-b517-bd4f81a79c3f.png)
+  
+### Running routing
+ In the openLane flow, routing is software used is Triton route. It does global routing as well as detailed routing. The below command runs it.
+ ![3_run](https://user-images.githubusercontent.com/110513499/183631212-f354b9b2-3c1e-46ba-a528-aa4c0a85409d.png)
+
+
+  
+  
+  
+  
+  
+  
 
 
 
